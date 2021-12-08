@@ -1,0 +1,96 @@
+<ion-content fullscreen="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" mode="md">
+      <ion-back-button defaultHref="/tabs/address/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div><app-maps></app-maps></div>
+
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item lines="none">
+        <ion-icon name="location-outline" color="dark" slot="start"></ion-icon>
+        <ion-label>{{location_name}}</ion-label>
+        <ion-button slot="end" size="small" color="light"
+          ><span>Change</span>
+        </ion-button>
+      </ion-item>
+      <ion-row class="ion-padding-horizontal">
+        <ion-note class="ion-text-wrap ion-padding-horizontal">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry
+        </ion-note>
+      </ion-row>
+      <ion-item-group class="ion-padding">
+        <ion-item>
+          <ion-label color="medium" position="floating">
+            <span>House / Flat / Block No:</span>
+          </ion-label>
+          <ion-input
+            type="text"
+            autocomplete
+            autocorrect
+            formControlName="house"
+          ></ion-input>
+          <ion-icon
+            name="checkmark-outline"
+            color="primary"
+            slot="end"
+            *ngIf="form.get('house').valid"
+          ></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="medium" position="floating">
+            <span>Landmark</span>
+          </ion-label>
+          <ion-input
+            type="text"
+            autocomplete
+            autocorrect
+            formControlName="landmark"
+          ></ion-input>
+          <ion-icon
+            name="checkmark-outline"
+            color="primary"
+            slot="end"
+            *ngIf="form.get('landmark').valid"
+          ></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="medium" position="floating">
+            <span>Save As</span>
+          </ion-label>
+          <ion-input
+            type="text"
+            autocomplete
+            autocorrect
+            formControlName="title"
+          ></ion-input>
+          <ion-icon
+            name="checkmark-outline"
+            color="primary"
+            slot="end"
+            *ngIf="form.get('title').valid"
+          ></ion-icon>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+
+    <div class="ion-padding-horizontal">
+      <ion-button
+        *ngIf="!isSubmitted"
+        color="primary"
+        expand="block"
+        type="submit"
+        (click)="onSubmit()"
+        [disabled]="!form?.valid"
+        >SAVE AND PROCEED</ion-button
+      >
+      <ion-button *ngIf="isSubmitted" expand="block" color="primary">
+        <ion-spinner name="crescent"></ion-spinner>
+      </ion-button>
+    </div>
+  </form>
+</ion-content>
